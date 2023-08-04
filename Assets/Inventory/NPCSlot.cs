@@ -28,7 +28,7 @@ public class NPCSlot : MonoBehaviour
         inventory = FindObjectOfType<InventoryController>();
         player = FindObjectOfType<PlayerController>();
         itemName.text = itemToBuy.GetComponentInChildren<spawn>().itemName;
-        itmeImage.sprite = itemToBuy.GetComponent<Image>().sprite;
+        //itmeImage.sprite = itemToBuy.GetComponent<Image>().sprite;
         buyPriceText.text = itemToBuy.GetComponentInChildren<spawn>().ItemPrice + " Gold";
     }
 
@@ -61,28 +61,6 @@ public class NPCSlot : MonoBehaviour
                 Instantiate(itemToBuy, inventory.slots[i].transform, false);
                 inventory.slots[i].GetComponent<Slot>().amount += 1;
                 break;
-            }
-        }
-    }
-
-    public void Sell()
-    {
-        for(int i = 0; i < inventory.slots.Length; i++)
-        {
-            if (inventory.slots[i].transform.GetComponent<Slot>().amount != 0)
-            {
-                if(itemName.text == inventory.slots[i].transform.GetComponentInChildren<spawn>().itemName)
-                {
-                    _ItemAmount += 1;
-                    inventory.slots[i].GetComponent<Slot>().amount -= 1;
-                    player.Gold += itemToBuy.GetComponentInChildren<spawn>().ItemPrice / 2;
-                    if (inventory.slots[i].GetComponent<Slot>().amount == 0)
-                    {
-                        inventory.slots[i].GetComponent<Slot>().ItemName.text = string.Empty;
-                        GameObject.Destroy(inventory.slots[i].transform.GetComponentInChildren<spawn>().gameObject);
-                    }
-                    break;
-                }
             }
         }
     }

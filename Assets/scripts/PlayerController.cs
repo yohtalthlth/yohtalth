@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
+
 {
+
+    private InventoryUI ui;
     // Start is called before the first frame update
     Rigidbody2D rbody;
     float axisH = 0.0f;
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public int Gold;
     public TextMeshProUGUI GoldAmountText;
+
+    bool activeShop = false;
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -46,12 +51,12 @@ public class PlayerController : MonoBehaviour
         oldAnime = stopAnime;
         gameState = "playing";
         state = true;
-        Goldden();
     }
 
     // Update is called once per frame
     void Update()
     {
+        GoldAmountText.text = Gold + " Gold";
 
         if (gameState != "playing")
         {
@@ -136,11 +141,6 @@ public class PlayerController : MonoBehaviour
     {
         goJump = true;
         Debug.Log(" 점프 버튼 눌림! ");
-    }
-
-    public void Goldden()
-    {
-        GoldAmountText.text = Gold + " Gold";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
