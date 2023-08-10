@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GoldAmountText.text = Gold + " Gold";
 
         if (gameState != "playing")
         {
@@ -82,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+        GoldAmountText.text = Gold + " Gold";
     }
 
     void FixedUpdate()
